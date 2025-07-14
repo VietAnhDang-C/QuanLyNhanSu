@@ -5,10 +5,6 @@
 
     import java.sql.SQLException;
 
-    /**
-     *
-     * @author Windows 10 Version 2
-     */
     public class connection {
 
         private static final String URL = "jdbc:sqlserver://localhost:1433;databaseName=nhansucongty;encrypt=false;trustServerCertificate=true";

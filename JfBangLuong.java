@@ -901,8 +901,8 @@ public class JfBangLuong extends javax.swing.JFrame {
         lbpb.setText("...");
         lbchucvu.setText("...");
         lbluongcb.setText("...");
-        lbluongthuong.setText("0");
-        lbkhoantru.setText("0");
+            lbluongthuong.setText("0");
+            lbkhoantru.setText("0");
         lbthuclanh.setText("...");
         datethoigian.setDate(null);
         txtphucap.setText("0");
