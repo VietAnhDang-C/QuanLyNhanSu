@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package quanlynhanvien;
+package com.raven.form;
 
+import com.raven.main.Main;
 import java.awt.Color;
 import java.sql.Connection;
 import javax.swing.JFrame;
@@ -21,7 +22,12 @@ public class DangNhap extends javax.swing.JFrame {
      */
     public DangNhap() {
         initComponents();
+        txtUserName.setName("txtUserName");
+        txtPassword.setName("txtPassword");
+        btnDangnhap.setName("btnDangnhap");
+
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,6 +67,11 @@ public class DangNhap extends javax.swing.JFrame {
         });
 
         txtPassword.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
+            }
+        });
 
         txtUserName.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         txtUserName.addActionListener(new java.awt.event.ActionListener() {
@@ -80,32 +91,29 @@ public class DangNhap extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(193, 193, 193)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(259, 259, 259)
-                        .addComponent(jLabel1)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(69, Short.MAX_VALUE)
+                .addGap(61, 61, 61)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(lblUserName)
-                                .addGap(58, 58, 58))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lblPassword)
-                                .addGap(97, 97, 97)))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(170, 170, 170))
+                        .addComponent(lblUserName)
+                        .addGap(58, 58, 58))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(lblPassword)
+                        .addGap(97, 97, 97)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(193, 193, 193)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(btnDangnhap, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(211, 211, 211))))
+                        .addGap(55, 55, 55)))
+                .addGap(0, 157, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,9 +130,9 @@ public class DangNhap extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPassword)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                .addGap(30, 30, 30)
                 .addComponent(btnDangnhap, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -142,80 +150,68 @@ public class DangNhap extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        quanlynhanvien.DangKy dk = new DangKy();
-        dk.show();
-        this.dispose();
+      
     }                                           
 
     private void btnDangnhapActionPerformed(java.awt.event.ActionEvent evt) {                                            
-       String TenDangNhap = txtUserName.getText().trim();
+        String TenDangNhap = txtUserName.getText().trim();
     String Password = String.valueOf(txtPassword.getPassword()).trim();
-    
-    // Kiểm tra tên đăng nhập
-    if (TenDangNhap.equals("")) {
+
+    if (TenDangNhap.isEmpty()) {
         ThongBao("Vui lòng nhập tên đăng nhập!", "Thông báo lỗi", JOptionPane.ERROR_MESSAGE);
         return;
     }
-    
-    // Kiểm tra mật khẩu
-    if (Password.equals("")) {
+
+    if (Password.isEmpty()) {
         ThongBao("Vui lòng nhập mật khẩu!", "Thông báo lỗi", JOptionPane.ERROR_MESSAGE);
         return;
     }
-    
+
     try (Connection conn = connection.getConnection()) {
-        // Kiểm tra tài khoản có tồn tại không
-        String checkUserExistsSql = "SELECT COUNT(*) FROM Tb_TaiKhoan WHERE TenDangNhap = ?";
-        PreparedStatement psExists = conn.prepareStatement(checkUserExistsSql);
-        psExists.setString(1, TenDangNhap);
-        ResultSet rsExists = psExists.executeQuery();
-        
-        if (rsExists.next() && rsExists.getInt(1) == 0) {
+        String sql = "SELECT MatKhau, HoTen, TrangThai, QuyenTruyCap FROM Tb_TaiKhoan WHERE TenDangNhap = ?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, TenDangNhap);
+        ResultSet rs = ps.executeQuery();
+
+        if (!rs.next()) {
             ThongBao("Tài khoản không tồn tại!", "Thông báo lỗi", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
-        // Kiểm tra tên đăng nhập và mật khẩu
-        String checkUserSql = "SELECT HoTen, TrangThai FROM Tb_TaiKhoan WHERE TenDangNhap = ? AND MatKhau = ?";
-        PreparedStatement psCheck = conn.prepareStatement(checkUserSql);
-        psCheck.setString(1, TenDangNhap);
-        psCheck.setString(2, Password);
-        ResultSet rs = psCheck.executeQuery();
-        
-        if (rs.next()) {
-            String hoTen = rs.getString("HoTen");
-            String trangThai = rs.getString("TrangThai");
-            
-            // Kiểm tra trạng thái tài khoản
-            if (trangThai.equals("Ngừng") || trangThai.equals("Vô hiệu hóa") || trangThai.equals("Khóa")) {
-                ThongBao("Tài khoản của bạn đã bị vô hiệu hóa. Vui lòng liên hệ quản trị viên!", 
-                        "Thông báo lỗi", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-            
-            // Đăng nhập thành công
-            ThongBao("Đăng nhập thành công! Xin chào " + hoTen + "!", 
-                    "Thông báo", JOptionPane.INFORMATION_MESSAGE);
-            
-            // Lưu username vào Session
-            Session.currentUsername = TenDangNhap;
-            // Chuyển đến màn hình chính
-          new Home(TenDangNhap).setVisible(true);
 
-            
-            this.dispose();
-            
-        } else {
-            // Tài khoản tồn tại nhưng mật khẩu sai
-            ThongBao("Tên đăng nhập hoặc mật khẩu không đúng!", 
-                    "Thông báo lỗi", JOptionPane.ERROR_MESSAGE);
+        String matKhauTrongDB = rs.getString("MatKhau");
+        String hoTen = rs.getString("HoTen");
+        String trangThai = rs.getString("TrangThai");
+        String quyenTruyCap = rs.getString("QuyenTruyCap");
+
+        if (!Password.equals(matKhauTrongDB)) {
+            ThongBao("Mật khẩu không đúng!", "Thông báo lỗi", JOptionPane.ERROR_MESSAGE);
+            return;
         }
-        
+
+        if (trangThai.equalsIgnoreCase("Ngừng") ||
+            trangThai.equalsIgnoreCase("Vô hiệu hóa") ||
+            trangThai.equalsIgnoreCase("Khóa")) {
+            ThongBao("Tài khoản đã bị vô hiệu hóa. Vui lòng liên hệ quản trị viên!",
+                    "Thông báo lỗi", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // ✅ Đăng nhập thành công
+        ThongBao("Đăng nhập thành công! Xin chào " + hoTen + "!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+        Session.currentUsername = TenDangNhap;
+        Session.currentUserRole = quyenTruyCap;
+
+        new Main().setVisible(true); // mở giao diện chính
+        this.dispose(); // đóng form đăng nhập
+
     } catch (Exception e) {
         e.printStackTrace();
-        ThongBao("Có lỗi xảy ra trong quá trình đăng nhập: " + e.getMessage(), 
-                "Lỗi", JOptionPane.ERROR_MESSAGE);
+        ThongBao("Lỗi khi đăng nhập: " + e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
     }
+    }                                           
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
     }                                           
 
     private void ThongBao(String noiDungThongBao, String tieuDeThongBao, int icon) {
@@ -245,6 +241,7 @@ public class DangNhap extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(DangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
